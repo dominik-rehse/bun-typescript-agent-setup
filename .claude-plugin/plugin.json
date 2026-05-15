@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+    "name": "bun-typescript-agent-setup",
+    "description": "Bun + TypeScript stack rules: TS conventions, formatting, bun:test testing, security, Bun-first tooling, and Bun runtime / built-in API guidance.",
+    "author": {
+        "name": "Dominik Rehse"
+    },
+    "homepage": "https://github.com/dominik-rehse/bun-typescript-agent-setup",
+    "repository": "https://github.com/dominik-rehse/bun-typescript-agent-setup",
+    "license": "MIT",
+    "keywords": [
+        "rules",
+        "typescript",
+        "bun",
+        "testing",
+        "security",
+        "conventions"
+    ]
+}

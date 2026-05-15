@@ -1,0 +1,13 @@
+{
+    "name": "bun-typescript-agent-setup",
+    "owner": {
+        "name": "Dominik Rehse"
+    },
+    "plugins": [
+        {
+            "name": "bun-typescript-agent-setup",
+            "source": ".",
+            "description": "Bun + TypeScript stack rules: TS conventions, formatting, bun:test testing, security, Bun-first tooling, and Bun runtime / built-in API guidance."
+        }
+    ]
+}

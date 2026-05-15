@@ -1,0 +1,16 @@
+{
+	"version": "0.1.0",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "bun build src/index.ts --outdir dist --target bun --format esm",
+		"dev": "bun run src/index.ts",
+		"test": "bun test",
+		"typecheck": "bunx tsc --noEmit",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"format:check": "biome format .",
+		"precommit": "biome check --write . && bun run typecheck && bun test && bun run build"
+	}
+}

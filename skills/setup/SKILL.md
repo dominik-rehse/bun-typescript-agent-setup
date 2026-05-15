@@ -1,0 +1,27 @@
+---
+description: Vendor bun-typescript-agent-setup into the current project. Copies rules to .claude/rules/*.md (and/or .cursor/rules/*.mdc, selected via --claude / --cursor / --both). Invoke with /bun-typescript-agent-setup:setup.
+argument-hint: "[--claude | --cursor | --both]"
+disable-model-invocation: true
+---
+
+# /bun-typescript-agent-setup:setup — Vendor rules into the current project
+
+Run once per project. This is the only install path — there is no SessionStart auto-mirror, so the rules only land in the project after this command runs and they're tracked in source control like any other file.
+
+Safe to re-run; existing files are not overwritten.
+
+## Task
+
+Run the installer that ships with the plugin:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/install.sh" $ARGUMENTS
+```
+
+Pass `--claude`, `--cursor`, or `--both` to choose which targets get installed. The default (no flag) installs both.
+
+The installer also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, and `.gitignore` into the project root (skip-if-exists) and runs `bun add -d @biomejs/biome @types/bun typescript`.
+
+After the script finishes, confirm with:
+
+> bun-typescript-agent-setup installed.
