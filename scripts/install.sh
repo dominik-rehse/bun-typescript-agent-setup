@@ -90,10 +90,9 @@ if [ "$WANT_CURSOR" -eq 1 ]; then
     done
 fi
 
-for f in "$SOURCE_DIR/templates"/*; do
-    [ -f "$f" ] || continue
+while IFS= read -r f; do
     install_file "$f" "$TARGET_DIR/$(basename "$f")" copy
-done
+done < <(find "$SOURCE_DIR/templates" -maxdepth 1 -type f)
 
 if command -v bun >/dev/null 2>&1; then
     echo "  run    bun add -d @biomejs/biome @types/bun typescript"
