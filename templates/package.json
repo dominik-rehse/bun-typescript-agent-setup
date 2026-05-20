@@ -9,8 +9,8 @@
 		"test": "bun test",
 		"typecheck": "bunx tsc --noEmit",
 		"lint": "biome check .",
-		"format": "biome format --write .",
-		"format:check": "biome format .",
-		"precommit": "biome check --write . && bun run typecheck && bun test && bun run build"
+		"format": "biome format --write . && dprint fmt",
+		"format:check": "biome format . && dprint check",
+		"precommit": "biome check --write . && dprint fmt && bun run typecheck && bun test && bun run build"
 	}
 }

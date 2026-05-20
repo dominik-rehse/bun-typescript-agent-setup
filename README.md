@@ -25,4 +25,4 @@ bash path/to/bun-typescript-agent-setup/scripts/install.sh
 
 Pass `--claude` or `--cursor` to install only one target (default: both).
 
-`install.sh` also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, and `.gitignore` into the project root (skip-if-exists) and runs `bun add -d @biomejs/biome @types/bun typescript` to install dev dependencies at latest.
+`install.sh` also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, `dprint.json`, and `.gitignore` into the project root (skip-if-exists) and runs `bun add -d @biomejs/biome @types/bun dprint typescript` to install dev dependencies at latest. Biome handles JS/TS/JSON formatting and linting; dprint handles Markdown.
