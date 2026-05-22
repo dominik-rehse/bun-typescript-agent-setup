@@ -11,6 +11,9 @@ pre-commit:
         - "*.cjs"
         - "*.json"
         - "*.jsonc"
+      exclude:
+        - ".claude/**"
+        - ".cursor/**"
       run: bunx biome check {staged_files}
 
     - name: dprint
