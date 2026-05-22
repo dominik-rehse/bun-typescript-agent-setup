@@ -95,10 +95,17 @@ while IFS= read -r f; do
 done < <(find "$SOURCE_DIR/templates" -maxdepth 1 -type f)
 
 if command -v bun >/dev/null 2>&1; then
-    echo "  run    bun add -d @biomejs/biome @types/bun dprint typescript"
-    bun add -d --cwd "$TARGET_DIR" @biomejs/biome @types/bun dprint typescript
+    echo "  run    bun add -d @biomejs/biome @types/bun dprint lefthook typescript"
+    bun add -d --cwd "$TARGET_DIR" @biomejs/biome @types/bun dprint lefthook typescript
+    if [ -d "$TARGET_DIR/.git" ]; then
+        echo "  run    bunx lefthook install"
+        (cd "$TARGET_DIR" && bunx lefthook install) || \
+            echo "  warn   lefthook install failed — run 'bunx lefthook install' manually"
+    else
+        echo "  skip   bunx lefthook install (no .git directory)"
+    fi
 else
-    echo "  warn   bun not found — run: bun add -d @biomejs/biome @types/bun dprint typescript"
+    echo "  warn   bun not found — run: bun add -d @biomejs/biome @types/bun dprint lefthook typescript"
 fi
 
 echo "bun-typescript-agent-setup: installed."

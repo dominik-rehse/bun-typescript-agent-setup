@@ -20,7 +20,7 @@ bash "${CLAUDE_PLUGIN_ROOT}/scripts/install.sh" $ARGUMENTS
 
 Pass `--claude`, `--cursor`, or `--both` to choose which targets get installed. The default (no flag) installs both.
 
-The installer also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, and `.gitignore` into the project root (skip-if-exists) and runs `bun add -d @biomejs/biome @types/bun typescript`.
+The installer also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, `dprint.json`, `lefthook.yml`, and `.gitignore` into the project root (skip-if-exists), runs `bun add -d @biomejs/biome @types/bun dprint lefthook typescript`, and registers the lefthook git hook via `bunx lefthook install` if the target is a git repository.
 
 After the script finishes, confirm with:
 

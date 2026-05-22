@@ -1,0 +1,44 @@
+pre-commit:
+  piped: true
+  jobs:
+    - name: biome
+      glob:
+        - "*.ts"
+        - "*.tsx"
+        - "*.js"
+        - "*.jsx"
+        - "*.mjs"
+        - "*.cjs"
+        - "*.json"
+        - "*.jsonc"
+      run: bunx biome check {staged_files}
+
+    - name: dprint
+      glob:
+        - "*.md"
+      run: bunx dprint check {staged_files}
+
+    - name: typecheck
+      glob:
+        - "*.ts"
+        - "*.tsx"
+        - "tsconfig.json"
+      run: bun run typecheck
+
+    - name: test
+      glob:
+        - "*.ts"
+        - "*.tsx"
+        - "package.json"
+        - "bun.lock"
+      run: bun test
+
+    - name: build
+      glob:
+        - "src/**/*.ts"
+        - "src/**/*.tsx"
+        - "src/**/*.json"
+        - "package.json"
+        - "bun.lock"
+        - "tsconfig.json"
+      run: bun run build
