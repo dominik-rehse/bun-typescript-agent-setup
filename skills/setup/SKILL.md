@@ -1,6 +1,5 @@
 ---
-description: Vendor bun-typescript-agent-setup into the current project. Copies rules to .claude/rules/*.md (and/or .cursor/rules/*.mdc, selected via --claude / --cursor / --both). Invoke with /bun-typescript-agent-setup:setup.
-argument-hint: "[--claude | --cursor | --both]"
+description: Vendor bun-typescript-agent-setup into the current project. Copies rules to .claude/rules/*.md. Invoke with /bun-typescript-agent-setup:setup.
 disable-model-invocation: true
 ---
 
@@ -17,8 +16,6 @@ Run the installer that ships with the plugin:
 ```bash
 bash "${CLAUDE_PLUGIN_ROOT}/scripts/install.sh" $ARGUMENTS
 ```
-
-Pass `--claude`, `--cursor`, or `--both` to choose which targets get installed. The default (no flag) installs both.
 
 The installer also writes templates such as `package.json`, `tsconfig.json`, `biome.json`, `dprint.json`, `lefthook.yml`, and `.gitignore` into the project root (skip-if-exists), runs `bun add -d @biomejs/biome @types/bun dprint lefthook typescript`, and registers the lefthook git hook via `bunx lefthook install` if the target is a git repository.
 

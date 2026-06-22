@@ -1,9 +1,3 @@
----
-description: Use when writing TypeScript or JavaScript code.
-alwaysApply: false
-globs: "**/*.ts, **/*.tsx, **/*.js, **/*.jsx"
----
-
 # TypeScript conventions
 
 ## Naming

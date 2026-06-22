@@ -1,9 +1,3 @@
----
-description: Use when creating new modules, files, or structuring the project.
-alwaysApply: false
-globs: "**/*"
----
-
 # Project structure
 
 ## Feature-based organization

@@ -1,8 +1,3 @@
----
-description: Use when modifying application logic, adding or updating tests, changing dependencies, or touching build, lint, or script configuration.
-alwaysApply: false
----
-
 # Tooling
 
 - Use `bun` for all package management, testing, and script execution. Never use `npm`, `yarn`, or `pnpm`.

@@ -1,8 +1,3 @@
----
-description: Use when asked about code formatting or linting.
-alwaysApply: false
----
-
 # Code formatting and linting
 
 Prefer [Biome](https://biomejs.dev/) as the formatter + linter for JS/TS/JSON in Bun projects — one fast tool, no extra runtime dependencies, configured via `biome.json`. Biome does not format Markdown, so use [dprint](https://dprint.dev/) with its markdown plugin for `.md` files, configured via `dprint.json`.

@@ -1,9 +1,3 @@
----
-description: Use when writing or running tests.
-alwaysApply: false
-globs: "*.test.ts, *.test.tsx, *.spec.ts, *.spec.tsx"
----
-
 # Testing with `bun:test`
 
 ## Structure

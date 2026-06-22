@@ -1,9 +1,3 @@
----
-description: Use when handling input, secrets, files, shell commands, HTTP, cookies, databases, or auth-sensitive code.
-alwaysApply: false
-globs: "**/*.ts, **/*.tsx, **/*.js, **/*.jsx"
----
-
 # Security
 
 ## External input

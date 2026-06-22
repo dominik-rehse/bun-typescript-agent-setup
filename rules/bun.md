@@ -1,9 +1,3 @@
----
-description: Use when working with the Bun runtime, package management, or testing.
-alwaysApply: false
-globs: "package.json, bun.lockb, bun.lock, *.test.ts, *.test.tsx"
----
-
 # Bun runtime
 
 ## CLI (use Bun, not Node/npm/yarn/pnpm)
