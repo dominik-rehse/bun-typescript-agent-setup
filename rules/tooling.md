@@ -8,3 +8,4 @@
 - Never hard-plug dependency versions. Always install the latest version programmatically.
 - Run `bun run precommit` before declaring the task done. If it cannot be run, explain why.
 - Do not generate or configure CI/CD pipelines (e.g., GitHub Actions) unless explicitly requested.
+- Use the Playwright MCP to test and fine-tune anything HTML/browser-viewable during development.
