@@ -8,7 +8,7 @@
 #   (default)   Write each file only if it doesn't already exist. Never clobbers.
 #   --check     Dry-run. Report files absent or differing from upstream. No
 #               writes. Exits 0 iff every UPDATABLE file is byte-identical to
-#               upstream. Use from CI to detect rule/config drift.
+#               upstream. Run before --force to preview what it would change.
 #   --force     Overwrite UPDATABLE files (rules/*, lefthook.yml, biome.json,
 #               dprint.json, .gitignore) with upstream. package.json and
 #               tsconfig.json are project-owned and are NEVER force-overwritten
