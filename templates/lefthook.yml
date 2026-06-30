@@ -18,6 +18,8 @@ pre-commit:
     - name: dprint
       glob:
         - "*.md"
+      exclude:
+        - ".claude/**"
       run: bunx dprint check {staged_files}
 
     - name: typecheck
