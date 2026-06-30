@@ -12,5 +12,5 @@
 
 ## Boundaries
 - Never edit `dist/` or `node_modules/`.
-- Use the Playwright MCP to test and fine-tune anything HTML/browser-viewable.
+- Use agent-browser (CLI or its MCP server) to test and fine-tune anything HTML/browser-viewable.
 - Don't set up CI/CD pipelines (e.g. GitHub Actions) unless explicitly requested.
