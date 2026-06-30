@@ -7,6 +7,7 @@
         {
             "name": "bun-typescript-agent-setup",
             "source": "./",
+            "version": "0.1.0",
             "description": "Bun + TypeScript stack rules: TS conventions, formatting, bun:test testing, security, Bun-first tooling, and Bun runtime / built-in API guidance."
         }
     ]

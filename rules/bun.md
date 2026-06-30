@@ -28,10 +28,6 @@
 - Prefer `Bun.serve()` for HTTP servers over Node-based frameworks when performance is critical.
 
 ## Testing
-```ts
-import { test, expect } from "bun:test";
 
-test("example", () => {
-  expect(1).toBe(1);
-});
-```
+Use `bun:test`. See `testing.md` for usage and conventions (and stdd's
+spec/test loop when that plugin is installed).

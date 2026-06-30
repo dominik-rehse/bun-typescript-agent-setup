@@ -24,8 +24,12 @@ bun test --coverage         # with coverage
 - Verify call counts with `toHaveBeenCalledTimes()`.
 
 ## Database testing
-- Use `:memory:` SQLite for tests.
-- Close the DB in `afterEach()`.
+- For SQLite-backed code, an in-memory `:memory:` database is a fast default;
+  close it in `afterEach()`.
+- For any other engine (Postgres, MySQL, Dolt, …), a `:memory:` SQLite shim does
+  not exercise the real dialect — use the real engine, in the integration tier
+  (under an `integration/` directory) rather than a substitute. When stdd is
+  installed, its tiers and prefer-real-dependencies stance govern this.
 
 ## Rules
 - Never skip tests with `.skip()` — fix them.

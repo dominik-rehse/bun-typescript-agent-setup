@@ -50,4 +50,7 @@ pre-commit:
         - "package.json"
         - "bun.lock"
         - "tsconfig.json"
-      run: bun run build
+      # Shape-aware: only gate on the build when the project defines a `build`
+      # script. App/server/MCP projects that don't bundle simply remove the
+      # script and this job no-ops, instead of failing on `bun build src/index.ts`.
+      run: 'if grep -q "\"build\":" package.json; then bun run build; fi'
