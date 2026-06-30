@@ -1,18 +1,20 @@
 #!/bin/bash
 # Project install for the bun-typescript-agent-setup plugin (Claude Code).
 #
-# Idempotent. Installs project-local rules into .claude/rules/*.md and stack
-# templates into the project root. Pass the target as the first non-flag arg.
+# Idempotent. Installs the stack TEMPLATES into the project root and the dev
+# toolchain. Rules are NOT installed here — they are injected live by the
+# plugin's SessionStart hook, so they never go stale and need no re-sync.
+# Pass the target as the first non-flag arg.
 #
-# Modes:
+# Modes (apply to the config templates):
 #   (default)   Write each file only if it doesn't already exist. Never clobbers.
 #   --check     Dry-run. Report files absent or differing from upstream. No
 #               writes. Exits 0 iff every UPDATABLE file is byte-identical to
 #               upstream. Run before --force to preview what it would change.
-#   --force     Overwrite UPDATABLE files (rules/*, lefthook.yml, biome.json,
-#               dprint.json, .gitignore) with upstream. package.json and
-#               tsconfig.json are project-owned and are NEVER force-overwritten
-#               (only written when absent) — they carry per-project edits.
+#   --force     Overwrite UPDATABLE files (lefthook.yml, biome.json, dprint.json,
+#               .gitignore) with upstream. package.json and tsconfig.json are
+#               project-owned and are NEVER force-overwritten (only written when
+#               absent) — they carry per-project edits.
 #
 # In --check/--force, scope is the updatable set only; package.json/tsconfig.json
 # are reported as project-owned and left untouched.
@@ -82,12 +84,6 @@ install_file() {
             cp "$src" "$dst"; echo "  write  $dst" ;;
     esac
 }
-
-mkdir -p "$TARGET_DIR/.claude/rules"
-for f in "$SOURCE_DIR/rules"/*.md; do
-    [ -f "$f" ] || continue
-    install_file "$f" "$TARGET_DIR/.claude/rules/$(basename "$f")"
-done
 
 while IFS= read -r f; do
     install_file "$f" "$TARGET_DIR/$(basename "$f")"

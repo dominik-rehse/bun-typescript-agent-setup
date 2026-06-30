@@ -1,0 +1,15 @@
+{
+  "description": "SessionStart injects this plugin's rules into the session context live from the plugin (no vendored copy), so rule updates apply on the next session. Runs through bash so execution does not depend on executable bits.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
