@@ -1,5 +1,11 @@
 # Testing with `bun:test`
 
+> When the **stdd** plugin is installed, it owns the test *methodology*: follow
+> its spec-first red-green-refactor loop, its test tiers (a fast unit gate vs.
+> slow tests under `integration/` / `e2e/`), and its coverage audit. This file
+> then covers `bun:test` *mechanics* only — where the rules below differ from
+> stdd (e.g. mocking vs. real dependencies), stdd wins.
+
 ## Structure
 - Place `*.test.ts` alongside the code being tested.
 - Use `describe()` for grouping, `test()` for cases.

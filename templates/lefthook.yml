@@ -33,7 +33,12 @@ pre-commit:
         - "*.tsx"
         - "package.json"
         - "bun.lock"
-      run: bun test
+      # Prefer the stdd gate when the stdd plugin is installed: it runs the
+      # tiered unit suite, honours .stdd-off, and verifies .stdd-integrity.
+      # Fall back to plain `bun test` when stdd isn't present. This lets stdd
+      # compose with no hand-wiring and no ordering dependency on
+      # `lefthook install` (stdd's setup detects this job as already wired).
+      run: 'if [ -x ./scripts/stdd-precommit.sh ]; then ./scripts/stdd-precommit.sh; else bun test; fi'
 
     - name: build
       glob:
