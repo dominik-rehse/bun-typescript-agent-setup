@@ -13,7 +13,12 @@ pre-commit:
         - "*.jsonc"
       exclude:
         - ".claude/**"
-      run: bunx biome check {staged_files}
+      # --no-errors-on-unmatched: exit 0 (not fail) when every staged file the
+      # glob caught turns out to be ignored by biome.json — e.g. a commit that
+      # only touches generated JSON biome is configured to skip (stdd's
+      # docs/specs/.redteam/ stamps, a built src/styles/output.css). Without it,
+      # biome errors "no files were processed" and blocks the commit.
+      run: bunx biome check --no-errors-on-unmatched {staged_files}
 
     - name: dprint
       glob:
