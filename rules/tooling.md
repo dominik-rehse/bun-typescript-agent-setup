@@ -3,6 +3,7 @@
 ## Package management
 - Use `bun` for all package management, testing, and scripts. Never `npm`, `yarn`, or `pnpm`.
 - Install dependencies at their latest version programmatically — never hard-code versions.
+- Updating an existing dependency has its own mechanics. See `dependencies.md`.
 
 ## Quality gates
 - Write tests for new features with `bun:test` (colocated `*.test.ts`).
