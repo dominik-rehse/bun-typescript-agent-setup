@@ -46,5 +46,6 @@ double-loading. Delete the vendored copy to switch that rule to live injection.)
 Start a new session afterwards. The rules load fresh from the updated plugin. The
 **config templates** do not auto-update — re-run `/bun-typescript-agent-setup:setup
 --check` to see drift and `--force` to pick it up (`package.json`/`tsconfig.json`
-are project-owned and never force-overwritten). The plugin is versioned — bump
-`version` in `plugin.json` to ship a release.
+are project-owned and never force-overwritten). The plugin is versioned — a
+release bumps `version` in both `.claude-plugin/plugin.json` and
+`.claude-plugin/marketplace.json`, and the two must match.
