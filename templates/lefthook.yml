@@ -27,11 +27,21 @@ pre-commit:
         - ".claude/**"
       run: bunx dprint check {staged_files}
 
+    # typecheck and test also trigger on dependency and toolchain-config files.
+    # A commit that only stages package.json + bun.lock can carry a compiler or
+    # library major bump, which breaks compilation and tests without touching a
+    # source glob. Before this, such a commit skipped both jobs and shipped
+    # unchecked. biome.json is in the set so any toolchain-config commit hits the
+    # full gate — one extra typecheck run is cheap next to a config change
+    # sliding through.
     - name: typecheck
       glob:
         - "*.ts"
         - "*.tsx"
         - "tsconfig.json"
+        - "package.json"
+        - "bun.lock"
+        - "biome.json"
       run: bun run typecheck
 
     - name: test
@@ -40,6 +50,8 @@ pre-commit:
         - "*.tsx"
         - "package.json"
         - "bun.lock"
+        - "tsconfig.json"
+        - "biome.json"
       # Prefer the stdd gate when the stdd plugin is installed: it runs the
       # tiered unit suite, honours .stdd-off, and verifies .stdd-integrity.
       # Fall back to plain `bun test` when stdd isn't present. This lets stdd
@@ -55,6 +67,11 @@ pre-commit:
         - "package.json"
         - "bun.lock"
         - "tsconfig.json"
+      # The build gate already triggers on package.json, bun.lock and
+      # tsconfig.json, so a dependency bump rebuilds. biome.json stays off this
+      # list on purpose: lint config never changes the bundle, and build is the
+      # slowest job in the gate.
+      #
       # Shape-aware: only gate on the build when the project defines a `build`
       # script. App/server/MCP projects that don't bundle simply remove the
       # script and this job no-ops, instead of failing on `bun build src/index.ts`.
